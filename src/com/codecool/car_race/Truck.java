@@ -2,9 +2,8 @@ package com.codecool.car_race;
 
 import java.util.Random;
 
-public class Truck {
+public class Truck extends Vehicle {
 
-    private int speed;
     private int breakdownTurnsLeft;
     private int truckName;
 
@@ -36,7 +35,7 @@ public class Truck {
             breakdownTurnsLeft -= 1;
         }
         if (breakdownTurnsLeft == 0) speed = 100;
-        System.out.println("breakdownturnsleft for truck " + truckName +": " + breakdownTurnsLeft);
+        System.out.println("Breakdown turns left for truck " + truckName +": " + breakdownTurnsLeft);
     }
 }
 

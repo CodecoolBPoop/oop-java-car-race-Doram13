@@ -4,13 +4,14 @@ import java.util.Random;
 
 public class Motorcycle extends Vehicle{
 
-    private int speed;
-    private String name;
+    private int normalSpeed;
 
+    private String name;
     private static int motorcycleNumber = 1;
 
     Motorcycle() {
-        speed = 100;
+        normalSpeed = 100;
+        speed = normalSpeed;
         name = generateMotorName();
         motorcycleNumber++;
     }
@@ -26,12 +27,16 @@ public class Motorcycle extends Vehicle{
         return sb.toString();
     }
 
+
     void prepareForLap(Race race) {
-        if (race.isItRaining()) {
+        if (race.getIsRaining()) {
             Random r = new Random();
-            speed = speed - (r.nextInt(45)+5);
+            speed = normalSpeed - (r.nextInt(46)+5);
+        } else {
+            speed = normalSpeed;
         }
-        System.out.println("set " + name + "'s speed to: " + speed);
+
+        System.out.println(name + "'s speed is: " + speed);
         }
     }
-}
+

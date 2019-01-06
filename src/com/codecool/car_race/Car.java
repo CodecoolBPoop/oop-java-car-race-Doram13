@@ -10,13 +10,16 @@ public class Car extends Vehicle {
     private String carName;
     private int normalSpeed;
 
+
     Car() {
         normalSpeed = generateSpeed();
+        speed = normalSpeed;
         carName = generateCarName();
-
     }
 
-
+    String getCarName() {
+        return carName;
+    }
 
     private String generateCarName() {
         List<String> carNamePool = new ArrayList<>(Arrays.asList("Buffalo", "Roamer", "Utopia", "Phantom", "Pyre",
@@ -32,9 +35,17 @@ public class Car extends Vehicle {
 
     private int generateSpeed() {
         Random r = new Random();
-        return r.nextInt(30)+80;
+        speed = r.nextInt(31) + 80;
+        return speed;
     }
 
-    void prepareForLap() {
-
+    void prepareForLap(Race race) {
+        if (race.isThereBrokenTruck()) {
+            speed = 75;
+        } else {
+            speed = normalSpeed;
+        }
+        System.out.println(carName + "'s speed: " + speed);
     }
+
+}
